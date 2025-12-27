@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BluePink Security | Kenya Cybersecurity Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0d47a1;
+            --primary-pink: #e91e63;
+            --secondary-blue: #1565c0;
+            --secondary-pink: #f06292;
+            --light-blue: #e3f2fd;
+            --light-pink: #fce4ec;
+            --dark-gray: #333;
+            --medium-gray: #666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            border-radius: 8px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-pink) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            opacity: 0.1;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-pink), var(--primary-blue));
+            opacity: 0.1;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--medium-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight {
+            background-color: rgba(233, 30, 99, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary-pink);
+        }
+
+        /* Question Section */
+        .question-section {
+            padding: 100px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .question-box {
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        .response-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .response-btn {
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            min-width: 160px;
+            box-shadow: var(--shadow);
+        }
+
+        .yes-btn {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-5px);
+        }
+
+        .no-btn {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+
+        .no-btn:hover {
+            background-color: var(--secondary-pink);
+            transform: translateY(-5px);
+        }
+
+        .precision-note {
+            color: var(--medium-gray);
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        /* Follow-up Questions */
+        .follow-up {
+            display: none;
+            margin-top: 30px;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .follow-up h3 {
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: block;
+            margin: 30px auto 0;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--medium-gray);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-pink);
+            padding-left: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .response-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .response-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .question-box {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .question-text {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">BP</div>
+                    <div class="logo-text">BluePink Security</div>
+                </a>
+                
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="#home">Home</a>
+                    <a href="#question">Quick Question</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Kenya Cybersecurity Talent Network</h1>
+            <p>Connecting <span class="highlight">Kenya's top IT & cybersecurity professionals</span> with exciting remote and on-site opportunities. Whether you're looking for freelance missions, part-time engagements, or full-time roles, we're building a curated network to match your skills with the right opportunities.</p>
+        </div>
+    </section>
+
+    <!-- Question Section -->
+    <section class="question-section" id="question">
+        <div class="container">
+            <h2 class="section-title">Quick Question</h2>
+            <p class="section-subtitle">Help us understand your availability for future opportunities. Your response will help us match you with relevant roles.</p>
+            
+            <div class="question-box">
+                <p class="question-text">Are you open to being contacted in the next months for relevant IT / cybersecurity opportunities that match your skills and expectations?</p>
+                
+                <div class="response-buttons">
+                    <button class="response-btn yes-btn" id="yesBtn">
+                        <i class="fas fa-check-circle"></i> Yes, I'm open
+                    </button>
+                    <button class="response-btn no-btn" id="noBtn">
+                        <i class="fas fa-times-circle"></i> No, not interested
+                    </button>
+                </div>
+                
+                <p class="precision-note">If you select "No", you can still share details about your preferences for future reference.</p>
+                
+                <!-- Follow-up form for "No" response -->
+                <div class="follow-up" id="followUpForm">
+                    <h3>Share Your Preferences</h3>
+                    <p>Please let us know your preferences so we can contact you only when the right opportunity arises.</p>
+                    
+                    <form id="preferencesForm">
+                        <div class="form-group">
+                            <label for="roleTypes">What type of roles are you interested in? (Select all that apply)</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="freelance" name="roleTypes" value="Freelance missions">
+                                    <label for="freelance">Freelance Missions</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="partTime" name="roleTypes" value="Part-time roles">
+                                    <label for="partTime">Part-time Roles</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="fullTime" name="roleTypes" value="Full-time roles">
+                                    <label for="fullTime">Full-time Roles</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="contract" name="roleTypes" value="Contract positions">
+                                    <label for="contract">Contract Positions</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="workPreference">Work Preference</label>
+                            <select id="workPreference" name="workPreference" class="form-control">
+                                <option value="">Select preference</option>
+                                <option value="Remote only">Remote only</option>
+                                <option value="On-site only">On-site only</option>
+                                <option value="Hybrid (remote & on-site)">Hybrid (remote & on-site)</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialization">Your Primary Specialization</label>
+                            <select id="specialization" name="specialization" class="form-control">
+                                <option value="">Select specialization</option>
+                                <option value="Penetration Testing">Penetration Testing</option>
+                                <option value="Network Security">Network Security</option>
+                                <option value="Cloud Security">Cloud Security</option>
+                                <option value="Application Security">Application Security</option>
+                                <option value="Security Operations">Security Operations</option>
+                                <option value="Incident Response">Incident Response</option>
+                                <option value="Risk & Compliance">Risk & Compliance</option>
+                                <option value="Security Engineering">Security Engineering</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rateExpectation">Rate/Salary Expectations (Optional)</label>
+                            <input type="text" id="rateExpectation" name="rateExpectation" class="form-control" placeholder="e.g., $50/hr, KES 200,000/month, etc.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information (Optional)</label>
+                            <textarea id="additionalInfo" name="additionalInfo" class="form-control" placeholder="Any other preferences, constraints, or information you'd like to share..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Building Kenya's Premier Cybersecurity Network</h2>
+                    <p>BluePink Security is creating a curated community of top-tier cybersecurity professionals across Kenya. Our mission is to connect talented individuals with meaningful opportunities that match their skills, experience, and career aspirations.</p>
+                    <p>Whether you're an experienced penetration tester, network security expert, or an emerging talent in cybersecurity, we want to include you in our network for future opportunities.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Curated Network</h3>
+                            <p>Carefully selected professionals ensuring quality matches.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Direct Opportunities</h3>
+                            <p>Get connected directly with companies seeking your skills.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-laptop-house"></i>
+                            </div>
+                            <h3>Flexible Work</h3>
+                            <p>Remote, on-site, part-time, and full-time opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">BP</div>
+                        <span>BluePink Security</span>
+                    </div>
+                    <p>Connecting Kenya's cybersecurity talent with global opportunities. Building a network of professionals for freelance, part-time, and full-time engagements.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#question">Quick Question</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <p>+254 719 879 928</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p>WhatsApp: +254 719 879 928</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p>network@bluepinksecurity.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 BluePink Security. All rights reserved. | Kenya Cybersecurity Talent Network</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Response buttons functionality
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const followUpForm = document.getElementById('followUpForm');
+        const preferencesForm = document.getElementById('preferencesForm');
+        
+        // Yes button - redirect to Google Form
+        yesBtn.addEventListener('click', () => {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfdzGFjAH5sKidIDCzQrPvPx5BXfe8RzdrnJ-MkmzA-asz9Ug/viewform', '_blank');
+        });
+        
+        // No button - show follow-up form
+        noBtn.addEventListener('click', () => {
+            followUpForm.style.display = 'block';
+            // Smooth scroll to form
+            followUpForm.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Form submission to WhatsApp
+        preferencesForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Collect form data
+            const roleTypes = Array.from(document.querySelectorAll('input[name="roleTypes"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(', ');
+            
+            const workPreference = document.getElementById('workPreference').value;
+            const specialization = document.getElementById('specialization').value;
+            const rateExpectation = document.getElementById('rateExpectation').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+            
+            // Create WhatsApp message
+            const phoneNumber = '254719879928';
+            let message = `*Cybersecurity Preferences Submission*%0A%0A`;
+            message += `*Response:* Not currently interested%0A`;
+            
+            if (roleTypes) {
+                message += `*Interested Roles:* ${roleTypes}%0A`;
+            }
+            
+            if (workPreference) {
+                message += `*Work Preference:* ${workPreference}%0A`;
+            }
+            
+            if (specialization) {
+                message += `*Specialization:* ${specialization}%0A`;
+            }
+            
+            if (rateExpectation) {
+                message += `*Rate Expectations:* ${rateExpectation}%0A`;
+            }
+            
+            if (additionalInfo) {
+                message += `*Additional Info:* ${additionalInfo}%0A`;
+            }
+            
+            message += `%0A---%0A*Submitted via BluePink Security Talent Network*`;
+            
+            // Open WhatsApp with pre-filled message
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form and show confirmation
+            preferencesForm.reset();
+            followUpForm.innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #0d47a1, #e91e63); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 36px;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 style="color: #0d47a1; margin-bottom: 15px;">Preferences Submitted!</h3>
+                    <p>Thank you for sharing your preferences. We've noted your information and will contact you only when the right opportunity matches your criteria.</p>
+                    <p style="margin-top: 20px; font-style: italic;">You can close this window now.</p>
+                </div>
+            `;
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
