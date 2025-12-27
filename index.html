@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BluePink Security | Kenya Cybersecurity Network</title>
+    <title>BluePink Security | Kenya Cybersecurity Experts Network</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -131,16 +131,15 @@
             color: var(--primary-blue);
         }
 
-        /* Hero Section */
-        .hero {
+        /* About Section - Hero */
+        .about-hero {
             padding: 180px 0 100px;
             background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-pink) 100%);
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .about-hero::before {
             content: '';
             position: absolute;
             width: 300px;
@@ -152,7 +151,7 @@
             right: -100px;
         }
 
-        .hero::after {
+        .about-hero::after {
             content: '';
             position: absolute;
             width: 200px;
@@ -164,45 +163,109 @@
             left: -50px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            position: relative;
-            z-index: 1;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
+        .about-text p {
+            margin-bottom: 20px;
             color: var(--medium-gray);
-            position: relative;
-            z-index: 1;
+            font-size: 1.1rem;
         }
 
-        .highlight {
-            background-color: rgba(233, 30, 99, 0.1);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
+        .why-join {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        .why-join h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .why-join ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .why-join li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .why-join li i {
             color: var(--primary-pink);
+            margin-top: 3px;
         }
 
-        /* Question Section */
-        .question-section {
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 10px 20px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .social-link.linkedin:hover {
+            background-color: #0077b5;
+        }
+
+        .social-link.twitter:hover {
+            background-color: #1da1f2;
+        }
+
+        /* Join Network Section */
+        .join-section {
             padding: 100px 0;
             background-color: var(--white);
-            text-align: center;
         }
 
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: var(--dark-gray);
+            text-align: center;
         }
 
         .section-subtitle {
@@ -210,6 +273,7 @@
             color: var(--medium-gray);
             max-width: 800px;
             margin: 0 auto 50px;
+            text-align: center;
         }
 
         .question-box {
@@ -230,74 +294,16 @@
             margin-bottom: 40px;
             color: var(--dark-gray);
             line-height: 1.8;
+            text-align: center;
         }
 
-        .response-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .response-btn {
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            min-width: 160px;
-            box-shadow: var(--shadow);
-        }
-
-        .yes-btn {
-            background-color: var(--primary-blue);
-            color: white;
-        }
-
-        .yes-btn:hover {
-            background-color: var(--secondary-blue);
-            transform: translateY(-5px);
-        }
-
-        .no-btn {
-            background-color: var(--primary-pink);
-            color: white;
-        }
-
-        .no-btn:hover {
-            background-color: var(--secondary-pink);
-            transform: translateY(-5px);
-        }
-
-        .precision-note {
-            color: var(--medium-gray);
-            font-style: italic;
-            margin-top: 20px;
-        }
-
-        /* Follow-up Questions */
-        .follow-up {
-            display: none;
-            margin-top: 30px;
-            text-align: left;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .follow-up h3 {
-            margin-bottom: 20px;
-            color: var(--primary-blue);
+        /* Form Styling */
+        .registration-form {
+            margin-top: 40px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
@@ -305,6 +311,10 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--dark-gray);
+        }
+
+        .form-group label .required {
+            color: var(--primary-pink);
         }
 
         .form-control {
@@ -321,25 +331,29 @@
             outline: none;
         }
 
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 40px;
         }
 
-        .checkbox-group {
+        .checkbox-group, .radio-group {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             margin-top: 10px;
         }
 
-        .checkbox-item {
+        .checkbox-item, .radio-item {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .checkbox-item input {
+        .checkbox-item input, .radio-item input {
             width: 18px;
             height: 18px;
         }
@@ -348,82 +362,51 @@
             background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
             color: white;
             border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow);
             display: block;
-            margin: 30px auto 0;
+            margin: 40px auto 0;
+            width: 100%;
+            max-width: 300px;
         }
 
         .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* About Section */
-        .about-section {
-            padding: 100px 0;
-            background-color: var(--light-gray);
+        .submit-btn i {
+            margin-right: 10px;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--dark-gray);
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--medium-gray);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature {
-            text-align: center;
-            padding: 25px;
-            background-color: var(--white);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .feature:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-pink));
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
             font-size: 28px;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
         }
 
-        .feature h3 {
-            margin-bottom: 10px;
-            color: var(--dark-gray);
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
         }
 
         /* Footer */
@@ -517,8 +500,8 @@
 
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
+            .about-text h1 {
+                font-size: 2.5rem;
             }
             
             .section-title {
@@ -552,35 +535,22 @@
                 opacity: 1;
             }
             
-            .hero {
+            .about-hero {
                 padding: 150px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .response-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .response-btn {
-                width: 100%;
-                max-width: 300px;
             }
             
             .question-box {
                 padding: 30px 20px;
             }
+            
+            .checkbox-group, .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
+            .about-text h1 {
                 font-size: 2rem;
             }
             
@@ -590,6 +560,14 @@
             
             .question-text {
                 font-size: 1.3rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -609,152 +587,214 @@
                 </div>
                 
                 <div class="nav-links" id="navLinks">
-                    <a href="#home">Home</a>
-                    <a href="#question">Quick Question</a>
-                    <a href="#about">About</a>
+                    <a href="#about">About Us</a>
+                    <a href="#join">Join Our Network</a>
                     <a href="#contact">Contact</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- About Section -->
+    <section class="about-hero" id="about">
         <div class="container">
-            <h1>Kenya Cybersecurity Talent Network</h1>
-            <p>Connecting <span class="highlight">Kenya's top IT & cybersecurity professionals</span> with exciting remote and on-site opportunities. Whether you're looking for freelance missions, part-time engagements, or full-time roles, we're building a curated network to match your skills with the right opportunities.</p>
-        </div>
-    </section>
-
-    <!-- Question Section -->
-    <section class="question-section" id="question">
-        <div class="container">
-            <h2 class="section-title">Quick Question</h2>
-            <p class="section-subtitle">Help us understand your availability for future opportunities. Your response will help us match you with relevant roles.</p>
-            
-            <div class="question-box">
-                <p class="question-text">Are you open to being contacted in the next months for relevant IT / cybersecurity opportunities that match your skills and expectations?</p>
-                
-                <div class="response-buttons">
-                    <button class="response-btn yes-btn" id="yesBtn">
-                        <i class="fas fa-check-circle"></i> Yes, I'm open
-                    </button>
-                    <button class="response-btn no-btn" id="noBtn">
-                        <i class="fas fa-times-circle"></i> No, not interested
-                    </button>
-                </div>
-                
-                <p class="precision-note">If you select "No", you can still share details about your preferences for future reference.</p>
-                
-                <!-- Follow-up form for "No" response -->
-                <div class="follow-up" id="followUpForm">
-                    <h3>Share Your Preferences</h3>
-                    <p>Please let us know your preferences so we can contact you only when the right opportunity arises.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h1>Kenya Cybersecurity Experts Network</h1>
+                    <p>BluePink Security is building a curated network of Kenya's top IT & cybersecurity professionals for future remote and on-site opportunities. We connect talented experts with meaningful freelance missions, part-time engagements, and full-time roles that match their skills and career aspirations.</p>
                     
-                    <form id="preferencesForm">
-                        <div class="form-group">
-                            <label for="roleTypes">What type of roles are you interested in? (Select all that apply)</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="freelance" name="roleTypes" value="Freelance missions">
-                                    <label for="freelance">Freelance Missions</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="partTime" name="roleTypes" value="Part-time roles">
-                                    <label for="partTime">Part-time Roles</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="fullTime" name="roleTypes" value="Full-time roles">
-                                    <label for="fullTime">Full-time Roles</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="contract" name="roleTypes" value="Contract positions">
-                                    <label for="contract">Contract Positions</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="workPreference">Work Preference</label>
-                            <select id="workPreference" name="workPreference" class="form-control">
-                                <option value="">Select preference</option>
-                                <option value="Remote only">Remote only</option>
-                                <option value="On-site only">On-site only</option>
-                                <option value="Hybrid (remote & on-site)">Hybrid (remote & on-site)</option>
-                                <option value="Flexible">Flexible</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="specialization">Your Primary Specialization</label>
-                            <select id="specialization" name="specialization" class="form-control">
-                                <option value="">Select specialization</option>
-                                <option value="Penetration Testing">Penetration Testing</option>
-                                <option value="Network Security">Network Security</option>
-                                <option value="Cloud Security">Cloud Security</option>
-                                <option value="Application Security">Application Security</option>
-                                <option value="Security Operations">Security Operations</option>
-                                <option value="Incident Response">Incident Response</option>
-                                <option value="Risk & Compliance">Risk & Compliance</option>
-                                <option value="Security Engineering">Security Engineering</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="rateExpectation">Rate/Salary Expectations (Optional)</label>
-                            <input type="text" id="rateExpectation" name="rateExpectation" class="form-control" placeholder="e.g., $50/hr, KES 200,000/month, etc.">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="additionalInfo">Additional Information (Optional)</label>
-                            <textarea id="additionalInfo" name="additionalInfo" class="form-control" placeholder="Any other preferences, constraints, or information you'd like to share..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
-                        </button>
-                    </form>
+                    <div class="why-join">
+                        <h3><i class="fas fa-star"></i> Why Join BluePink as an Expert?</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <strong>Access to Exclusive Opportunities:</strong> Get first access to vetted projects and roles from trusted partners</li>
+                            <li><i class="fas fa-check"></i> <strong>Professional Growth:</strong> Work on challenging projects that expand your skills and portfolio</li>
+                            <li><i class="fas fa-check"></i> <strong>Flexible Engagement:</strong> Choose from freelance, part-time, or full-time opportunities that fit your schedule</li>
+                            <li><i class="fas fa-check"></i> <strong>Competitive Compensation:</strong> Fair rates and salaries that match your expertise and market value</li>
+                            <li><i class="fas fa-check"></i> <strong>Network with Peers:</strong> Connect with other top cybersecurity professionals in Kenya</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/baka-impact" target="_blank" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i> CEO LinkedIn
+                        </a>
+                        <a href="https://www.linkedin.com/company/bluepinksecu/" target="_blank" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i> Company LinkedIn
+                        </a>
+                        <a href="https://x.com/bakasovereign?s=21" target="_blank" class="social-link twitter">
+                            <i class="fab fa-twitter"></i> CEO Twitter
+                        </a>
+                        <a href="https://x.com/bluepinksec?s=21" target="_blank" class="social-link twitter">
+                            <i class="fab fa-twitter"></i> Company Twitter
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
+    <!-- Join Network Section -->
+    <section class="join-section" id="join">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Building Kenya's Premier Cybersecurity Network</h2>
-                    <p>BluePink Security is creating a curated community of top-tier cybersecurity professionals across Kenya. Our mission is to connect talented individuals with meaningful opportunities that match their skills, experience, and career aspirations.</p>
-                    <p>Whether you're an experienced penetration tester, network security expert, or an emerging talent in cybersecurity, we want to include you in our network for future opportunities.</p>
+            <h2 class="section-title">Join Our Cybersecurity Network</h2>
+            <p class="section-subtitle">Register to be part of Kenya's premier cybersecurity talent pool. We'll match your skills with relevant opportunities.</p>
+            
+            <div class="question-box">
+                <p class="question-text">Are you open to being contacted in the next months for relevant IT / cybersecurity opportunities that match your skills and expectations?</p>
+                
+                <!-- Registration Form -->
+                <form class="registration-form" id="registrationForm">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" required placeholder="Enter your full name">
+                    </div>
                     
-                    <div class="features">
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required placeholder="e.g., 0712345678">
+                    </div>
+                    
+                    <!-- Current Role -->
+                    <div class="form-group">
+                        <label for="currentRole">Current Role/Title <span class="required">*</span></label>
+                        <input type="text" id="currentRole" name="currentRole" class="form-control" required placeholder="e.g., Senior Penetration Tester, Security Engineer">
+                    </div>
+                    
+                    <!-- Years of Experience -->
+                    <div class="form-group">
+                        <label for="experience">Years of Experience in Cybersecurity/IT <span class="required">*</span></label>
+                        <select id="experience" name="experience" class="form-control" required>
+                            <option value="">Select years of experience</option>
+                            <option value="0-2 years">0-2 years</option>
+                            <option value="3-5 years">3-5 years</option>
+                            <option value="6-10 years">6-10 years</option>
+                            <option value="10+ years">10+ years</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Cybersecurity Domains -->
+                    <div class="form-group">
+                        <label>Cybersecurity Domains (Select all that apply) <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pentesting" name="domains" value="Penetration Testing">
+                                <label for="pentesting">Penetration Testing</label>
                             </div>
-                            <h3>Curated Network</h3>
-                            <p>Carefully selected professionals ensuring quality matches.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-handshake"></i>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="networkSec" name="domains" value="Network Security">
+                                <label for="networkSec">Network Security</label>
                             </div>
-                            <h3>Direct Opportunities</h3>
-                            <p>Get connected directly with companies seeking your skills.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-laptop-house"></i>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="cloudSec" name="domains" value="Cloud Security">
+                                <label for="cloudSec">Cloud Security</label>
                             </div>
-                            <h3>Flexible Work</h3>
-                            <p>Remote, on-site, part-time, and full-time opportunities.</p>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="appSec" name="domains" value="Application Security">
+                                <label for="appSec">Application Security</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="soc" name="domains" value="Security Operations (SOC)">
+                                <label for="soc">Security Operations (SOC)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="risk" name="domains" value="Risk & Compliance">
+                                <label for="risk">Risk & Compliance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="incident" name="domains" value="Incident Response">
+                                <label for="incident">Incident Response</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="otherDomain" name="domains" value="Other">
+                                <label for="otherDomain">Other</label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    
+                    <!-- Open to Opportunities -->
+                    <div class="form-group">
+                        <label>Are you open to opportunities? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="openYes" name="openToOpportunities" value="Yes" required>
+                                <label for="openYes">Yes, I'm actively looking</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="openMaybe" name="openToOpportunities" value="Maybe">
+                                <label for="openMaybe">Maybe, for the right opportunity</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="openNo" name="openToOpportunities" value="No">
+                                <label for="openNo">Not currently looking</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Type of Opportunities -->
+                    <div class="form-group">
+                        <label>Type of Opportunities Interested In (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="freelance" name="opportunityTypes" value="Freelance missions">
+                                <label for="freelance">Freelance missions</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="partTime" name="opportunityTypes" value="Part-time roles">
+                                <label for="partTime">Part-time roles</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fullTime" name="opportunityTypes" value="Full-time roles">
+                                <label for="fullTime">Full-time roles</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contract" name="opportunityTypes" value="Contract positions">
+                                <label for="contract">Contract positions</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Work Preference -->
+                    <div class="form-group">
+                        <label for="workPreference">Work Location Preference</label>
+                        <select id="workPreference" name="workPreference" class="form-control">
+                            <option value="">Select preference</option>
+                            <option value="Remote only">Remote only</option>
+                            <option value="On-site only">On-site only</option>
+                            <option value="Hybrid (remote & on-site)">Hybrid (remote & on-site)</option>
+                            <option value="Flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Rate/Salary Expectations -->
+                    <div class="form-group">
+                        <label for="rateExpectation">Rate/Salary Expectations (Optional)</label>
+                        <input type="text" id="rateExpectation" name="rateExpectation" class="form-control" placeholder="e.g., $50/hr, KES 200,000/month, negotiable, etc.">
+                    </div>
+                    
+                    <!-- LinkedIn Profile -->
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile URL (Optional)</label>
+                        <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-group">
+                        <label for="additionalInfo">Additional Information (Optional)</label>
+                        <textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="4" placeholder="Any other information about your skills, certifications, availability, or specific interests..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i> Submit via WhatsApp
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -768,15 +808,14 @@
                         <div class="logo-icon">BP</div>
                         <span>BluePink Security</span>
                     </div>
-                    <p>Connecting Kenya's cybersecurity talent with global opportunities. Building a network of professionals for freelance, part-time, and full-time engagements.</p>
+                    <p>Building Kenya's premier cybersecurity talent network. Connecting experts with meaningful opportunities for freelance, part-time, and full-time engagements.</p>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#question">Quick Question</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#join">Join Our Network</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -811,10 +850,15 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 BluePink Security. All rights reserved. | Kenya Cybersecurity Talent Network</p>
+                <p>&copy; 2023 BluePink Security. All rights reserved. | Kenya Cybersecurity Experts Network</p>
             </div>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254719879928" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         // Mobile menu toggle
@@ -836,81 +880,84 @@
             });
         });
         
-        // Response buttons functionality
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const followUpForm = document.getElementById('followUpForm');
-        const preferencesForm = document.getElementById('preferencesForm');
-        
-        // Yes button - redirect to Google Form
-        yesBtn.addEventListener('click', () => {
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfdzGFjAH5sKidIDCzQrPvPx5BXfe8RzdrnJ-MkmzA-asz9Ug/viewform', '_blank');
-        });
-        
-        // No button - show follow-up form
-        noBtn.addEventListener('click', () => {
-            followUpForm.style.display = 'block';
-            // Smooth scroll to form
-            followUpForm.scrollIntoView({ behavior: 'smooth' });
-        });
-        
         // Form submission to WhatsApp
-        preferencesForm.addEventListener('submit', (e) => {
+        const registrationForm = document.getElementById('registrationForm');
+        
+        registrationForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             // Collect form data
-            const roleTypes = Array.from(document.querySelectorAll('input[name="roleTypes"]:checked'))
+            const formData = new FormData(registrationForm);
+            const formValues = Object.fromEntries(formData.entries());
+            
+            // Get checkbox values (they need special handling)
+            const domains = Array.from(document.querySelectorAll('input[name="domains"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(', ');
+                
+            const opportunityTypes = Array.from(document.querySelectorAll('input[name="opportunityTypes"]:checked'))
                 .map(checkbox => checkbox.value)
                 .join(', ');
             
-            const workPreference = document.getElementById('workPreference').value;
-            const specialization = document.getElementById('specialization').value;
-            const rateExpectation = document.getElementById('rateExpectation').value;
-            const additionalInfo = document.getElementById('additionalInfo').value;
-            
             // Create WhatsApp message
             const phoneNumber = '254719879928';
-            let message = `*Cybersecurity Preferences Submission*%0A%0A`;
-            message += `*Response:* Not currently interested%0A`;
+            let message = `*BLUEPINK SECURITY NETWORK REGISTRATION*%0A%0A`;
             
-            if (roleTypes) {
-                message += `*Interested Roles:* ${roleTypes}%0A`;
+            message += `*Full Name:* ${formValues.fullName || 'Not provided'}%0A`;
+            message += `*Email:* ${formValues.email || 'Not provided'}%0A`;
+            message += `*Phone:* ${formValues.phone || 'Not provided'}%0A`;
+            message += `*Current Role:* ${formValues.currentRole || 'Not provided'}%0A`;
+            message += `*Years of Experience:* ${formValues.experience || 'Not provided'}%0A`;
+            message += `*Cybersecurity Domains:* ${domains || 'Not specified'}%0A`;
+            message += `*Open to Opportunities:* ${formValues.openToOpportunities || 'Not specified'}%0A`;
+            message += `*Opportunity Types:* ${opportunityTypes || 'Not specified'}%0A`;
+            message += `*Work Preference:* ${formValues.workPreference || 'Not specified'}%0A`;
+            message += `*Rate Expectations:* ${formValues.rateExpectation || 'Not specified'}%0A`;
+            
+            if (formValues.linkedin) {
+                message += `*LinkedIn:* ${formValues.linkedin}%0A`;
             }
             
-            if (workPreference) {
-                message += `*Work Preference:* ${workPreference}%0A`;
+            if (formValues.additionalInfo) {
+                message += `*Additional Info:* ${formValues.additionalInfo}%0A`;
             }
             
-            if (specialization) {
-                message += `*Specialization:* ${specialization}%0A`;
-            }
-            
-            if (rateExpectation) {
-                message += `*Rate Expectations:* ${rateExpectation}%0A`;
-            }
-            
-            if (additionalInfo) {
-                message += `*Additional Info:* ${additionalInfo}%0A`;
-            }
-            
-            message += `%0A---%0A*Submitted via BluePink Security Talent Network*`;
+            message += `%0A---%0A*Submitted via BluePink Security Talent Network Registration*`;
             
             // Open WhatsApp with pre-filled message
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
             window.open(whatsappURL, '_blank');
             
-            // Reset form and show confirmation
-            preferencesForm.reset();
-            followUpForm.innerHTML = `
-                <div style="text-align: center; padding: 30px;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #0d47a1, #e91e63); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 36px;">
-                        <i class="fas fa-check"></i>
+            // Show confirmation message
+            const submitBtn = registrationForm.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Submitted Successfully!';
+            submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+            submitBtn.disabled = true;
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                registrationForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = 'linear-gradient(45deg, var(--primary-blue), var(--primary-pink))';
+                submitBtn.disabled = false;
+                
+                // Scroll to thank you message
+                registrationForm.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="width: 100px; height: 100px; background: linear-gradient(45deg, #0d47a1, #e91e63); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; color: white; font-size: 48px;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h2 style="color: #0d47a1; margin-bottom: 20px;">Registration Submitted!</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 30px; color: #666;">Thank you for joining the BluePink Security Network. We've received your information and will contact you when relevant opportunities match your profile.</p>
+                        <p style="font-style: italic; color: #888;">You can now close the WhatsApp window and return to this page.</p>
+                        <button onclick="location.reload()" style="background: linear-gradient(45deg, #0d47a1, #e91e63); color: white; border: none; padding: 12px 30px; font-size: 1rem; border-radius: 50px; cursor: pointer; margin-top: 30px;">
+                            Submit Another Response
+                        </button>
                     </div>
-                    <h3 style="color: #0d47a1; margin-bottom: 15px;">Preferences Submitted!</h3>
-                    <p>Thank you for sharing your preferences. We've noted your information and will contact you only when the right opportunity matches your criteria.</p>
-                    <p style="margin-top: 20px; font-style: italic;">You can close this window now.</p>
-                </div>
-            `;
+                `;
+            }, 3000);
         });
         
         // Smooth scrolling for anchor links
